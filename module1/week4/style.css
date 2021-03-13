@@ -1,0 +1,16 @@
+.my-own {
+    background-color: var(--bs-danger);
+}
+
+.card-section {
+    margin-top: -200px;
+}
+
+.cbtn:hover {
+    width: calc(100% + 20px);
+}
+
+.hero {
+    height: 50vh;
+    background-color: var(--bs-warning);    
+}

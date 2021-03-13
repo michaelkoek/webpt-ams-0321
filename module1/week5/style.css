@@ -1,0 +1,194 @@
+:root {
+    --primary-color: #302AE6;
+    --secondary-color: #536390;
+    --font-color: #424242;
+    --bg-color: #fff;
+    --heading-color: #292922;
+}
+
+[data-theme="dark"] {
+    --primary-color: #9A97F3;
+    --secondary-color: #818cab;
+    --font-color: #e1e1ff;
+    --bg-color: #161625;
+    --heading-color: #818cab;
+}
+
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.content {
+    display: flex;
+    width: 100%;
+}
+
+.list-popular {
+    width: 100%;
+    flex: 3;
+}
+
+.genre-boxes {
+    width: 100%;
+    flex: 2;
+}
+
+.list--songs {
+    padding: 0;
+    margin: 0;
+}
+
+.song-item {
+    background-color: orange;
+    padding: 10px 15px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.song-item:hover {
+    background-color: darkorange;
+    cursor: pointer;
+}
+
+.song-item--left,
+.song-item--right {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+
+.song-item__song {
+    flex: 3;
+}
+
+.song-item:not(:last-child) {
+    margin-bottom: 15px;
+}
+
+
+.toggle-btn {
+    width: 81px;
+    height: 37px;
+    background-color: grey;
+    border-radius: 20px;
+    position: relative;
+}
+
+.toggle-btn label {
+    opacity: 0;
+    font-size: 1px;
+}
+
+#toggle {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    z-index: 1;
+    cursor: pointer;
+}
+
+.toggle-container {
+    height:100%;
+    width: 100%;
+}
+
+#toggle:checked ~ .toggle-container {
+    background-color: green;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 20px;
+    transform: scale(0.9);
+}
+
+.toggle-container::before {
+    content: '';
+    height: 100%;
+    width: 20%;
+    border-radius: 50px;
+    background-color: #ffe;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 4px;
+    transition: left ease-in 0.15s;
+}
+
+#toggle:checked ~ .toggle-container::before {
+    left: 50px;
+}
+
+
+
+.ac {
+    font-size: 1rem;
+    font-weight: 600;
+    display: block;
+    position: relative;
+  }
+  
+  .ac::before,
+  .ac::after {
+     position: absolute;
+     left: 50%;
+  }
+  
+  .ac::before {
+    content: '';
+    width: 5px;
+    height: 5px;
+    background-color: green;
+    border: 1px solid black;
+    display: inline-block;
+    left: 51%;
+  }
+  
+  .ac::after {
+    content: '';
+    width: 5px;
+    height: 5px;
+    background-color: red;
+    border: 1px solid black;
+    display: inline-block;
+  }
+
+  .box {
+    width: 30px;
+    height: 30px;
+    background-color: skyblue;
+    border: 1px solid black;
+    cursor: pointer;
+    transition: width ease-in 0.15s, height ease-in 0.25s 0.15s; 
+  }
+  
+  .box > span {
+    transition: opacity ease-in 25ms 1s;
+  }
+  
+  .box:hover {
+    width: 60px;
+    height: 45px;
+  }
+  
+  .box:hover > span {
+    opacity: 1;
+  }

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <button id="btn-stop" class="btn">stop</button>
+    <button id="btn-play" class="btn">play</button>
+    <button id="btn-reset" class="btn">reset</button>
+
+    <canvas></canvas>
+
+    <main>
+        <section>
+            <div class="toggle-btn">
+                <label for="toggle">Toggle</label>
+                <input type="checkbox" id="toggle">
+                <div class="toggle-container"></div>
+            </div>
+        </section>
+
+        <section class="container">
+            <section class="content">
+                <article class="list-popular">
+                    <ul class="list--songs">
+                        <li class="song-item">
+
+                            <div class="song-item--left">
+                                <img src="https://via.placeholder.com/50x50" alt="album" title="cool artist" />
+                                <span class="song-item__position">1</span>
+                            </div><!-- /.song-item--left -->
+
+                            <span class="song-item__song">Love Song</span>
+
+                            <div class="song-item--right">
+                                <span class="song-item__time">3:31</span>
+                                <span class="song-item__axn">
+                                    <button clas="btn btn-dots"></button>
+                                </span>
+                            </div><!-- /. song-item--right -->
+                        </li><!-- /.song-item -->
+                        <li class="song-item">
+                            <img src="https://via.placehold/50" alt="album" title="cool artist" />
+                            <span class="song-item__position">1</span>
+                            <span class="song-item__song">Love Song</span>
+                            <span class="song-item__time">3:31</span>
+                            <span class="song-item__axn">
+                                <button clas="btn btn-dots"></button>
+                            </span>
+                        </li>
+                        <li class="song-item">
+                            <img src="https://via.placehold/50" alt="album" title="cool artist" />
+                            <span class="song-item__position">1</span>
+                            <span class="song-item__song">Love Song</span>
+                            <span class="song-item__time">3:31</span>
+                            <span class="song-item__axn">
+                                <button clas="btn btn-dots"></button>
+                            </span>
+                        </li>
+                        <li class="song-item">
+                            <img src="https://via.placehold.initial-scale/50" alt="album" title="cool artist" />
+                            <span class="song-item__position">1</span>
+                            <span class="song-item__song">Love Song</span>
+                            <span class="song-item__time">3:31</span>
+                            <span class="song-item__axn">
+                                <button clas="btn btn-dots"></button>
+                            </span>
+                        </li>
+
+                    </ul>
+                </article><!-- /.list-popular -->
+                <article class="genre-boxes">
+                    <section class="box">Ghetto rap</section>
+                    <section class="box">Classical</section>
+                    <section class="box">Opera</section>
+                    <section class="box">Salsa</section>
+                </article><!-- /.genre-boxes -->
+
+            </section>
+
+        </section>
+    </main>
+
+    <script src="./1004.js"></script>
+    <!-- <script src="./canvas-animation.js"></script> -->
+</body>
+
+</html>

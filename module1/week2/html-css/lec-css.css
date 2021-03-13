@@ -1,0 +1,104 @@
+.container {
+    display: flex;
+  }
+  
+  .box {
+    width: 50px;
+    height: 50px;
+    border: 1px solid black;
+    cursor: pointer;
+    margin-right: 10px;
+    transition: transform 0.4s ease-in-out;
+  }
+  
+  .box:hover {
+    transform: rotateY(90deg);
+  }
+  
+  .tomato {
+    background-color: tomato;
+  }
+  
+  .orange {
+    background-color: #f90;
+  }
+  
+  .green {
+    background-color: olive;
+  }
+  
+  .pulse-item {
+      width: 100px;
+      height: 100px;
+      background-color: skyblue;
+      border: 1px solid black;
+      box-shadow: 1px 1px 1px #3e3e3e;
+  /*     animation: pulseAnimation 2s infinite; */
+  }
+  
+  
+  /* @keyframes pulseAnimation {
+    0% {
+      background-color: red;
+    }
+    
+    50% {
+      background-color: #f90;
+    }
+    
+    100% {
+      background-color: red;
+    }
+  } */
+  
+  
+  .check-item {
+  /*   background-color: red; */
+    position: relative;
+  }
+  
+  .check-item__input {
+    position: absolute;
+    background-color: red;
+    opacity: .5;
+    cursor: pointer;
+    width: 100%;
+  }
+  
+  .check-item__text {
+    padding: 10px;
+    margin-left: 30px;
+  }
+  
+  .check-item__text::before {
+    content: '';
+    height: 30px;
+    width: 30px;
+    border: 1px solid black;
+    display: inline-block;
+    border-radius: 5px;
+    margin-right: 10px;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  .check-item__input:checked ~ .check-item__text::before {
+    background-color: green;
+  }
+  
+  .check-item__input:disabled ~ .check-item__text::before {
+    background-color: grey;
+  }
+  
+  .check-item__input:disabled {
+    cursor: not-allowed;
+  }
+  
+  
+  .gradient {
+    background-color: red;
+  }
+  
+  
