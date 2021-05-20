@@ -28,6 +28,18 @@ app.use(cookieParser());
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
+//async function to compare password and hash :D
+const comparePassword = async (password, hash) => {
+    try {
+        // Compare password
+        return await bcrypt.compare(password, hash);
+    } catch (error) {
+        next(error);
+    }
+    // Return false if error
+    return false;
+};
+
 app.get('/', (req, res) => res.render('index'));
 
 app.get('/signup', (req, res) => res.render('signup'));
@@ -77,7 +89,7 @@ app.post('/login', async (req, res, next) => {
     if (!user) {
         res.render('login', { errorMessage: 'Email is not registered. Try with other email.' });
         return;
-      } else if (bcryptjs.compareSync(password, user.passwordHash)) {
+      } else if (comparePassword(password, user.passwordHash)) {
           console.log(`password : ${password} hash: ${user.passwordHash}`);
         res.redirect('/userProfile');
       } else {
