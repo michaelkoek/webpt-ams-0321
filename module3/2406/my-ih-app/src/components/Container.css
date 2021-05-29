@@ -1,0 +1,14 @@
+.main-container {
+    position: relative;
+    width: 100%;
+    padding: 5%;
+}
+
+.grey {
+    background-color: grey; 
+
+}
+
+.yellow {
+    background-color: #f90;
+}

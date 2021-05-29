@@ -23,6 +23,8 @@ app.use('/course', coursesRoute);
 app.use('/student', studentRoute);
 
 app.get('/', (req, res, next) => {
+    res.locals.test = 'hallo from res'
+    console.log(res.locals)
     res.send('Welcome WDPT')
 });
 
