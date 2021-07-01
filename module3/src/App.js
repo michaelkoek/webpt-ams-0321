@@ -1,15 +1,14 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
-import './App.css';
+import Form from "./components/Form";
 
+import "./App.css";
 class App extends Component {
-
-  state = {
-  }
-
   render() {
     return (
-     <h1>Hi</h1>
+      <main className="app">
+        <Form />
+      </main>
     );
   }
 }
