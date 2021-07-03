@@ -1,8 +1,10 @@
 import React, { Component } from "react";
+import Button from "./Button";
+import Toaster from "./Toaster";
+import Container from "./Container";
 
 import "./Form.css";
 
-// Fetch URL: https://jsonplaceholder.typicode.com/users
 class Form extends Component {
   state = {
     toggleMenu: false,
@@ -44,7 +46,8 @@ class Form extends Component {
     // Clear the form on succesful
   };
 
-  onHandleCopyfield = () => {
+  onHandleCopyfield = (name) => {
+    console.log(name);
     console.log("add copy field");
     if (this.state.addCopyfield <= 5) {
       this.setState((prevState) => ({
@@ -54,14 +57,14 @@ class Form extends Component {
   };
 
   onHandleFormElement = (event) => {
-    // const name = event.target.name;
-    // const value = event.target.value;
+    console.log(event);
     const { name, value } = event.target;
-    console.log({ name, value });
+
+    <input type="text" name="ih-classname" />;
 
     // this.setState({
     //   form: {
-    //     [name]: value,
+    //     // EVERYTHING IN HERE WIULL BE UPDATED
     //   },
     // });
 
@@ -80,9 +83,9 @@ class Form extends Component {
     return (
       <>
         <header>
-          <section className="container">
+          <Container bgcolor="#f90">
             <h1>Iron Hack Complaints Form</h1>
-          </section>
+          </Container>
         </header>
 
         <section className="container">
@@ -141,7 +144,7 @@ class Form extends Component {
               <button
                 className="btn btn-simple"
                 type="button"
-                onClick={this.onHandleCopyfield}
+                onClick={() => this.onHandleCopyfield("milo")}
               >
                 add+
               </button>
@@ -197,12 +200,12 @@ class Form extends Component {
               />
             </section>
 
-            <button className="btn btn-primary" type="submit">
-              Submit
-            </button>
-            <button className="btn btn-secondary" type="button">
+            <Button type="submit">Submit</Button>
+            {/* <button className="btn btn-primary" type="submit">Submit</button> */}
+
+            <Button btnType="secondary" type="button">
               Reset
-            </button>
+            </Button>
           </form>
 
           {saving && <p>saving...</p>}
@@ -214,18 +217,17 @@ class Form extends Component {
           </article>
         </section>
 
-        <section className="toaster toaster-success">
-          <div className="toaster-close-btn">close</div>
-          <p>Succesfully saved</p>
-        </section>
-
         <section className="toaster toaster-error">
           <div className="toaster-close-btn">close</div>
           <p>Something went wrong: [Error message]</p>
         </section>
 
+        <Toaster type="success">
+          <p>Succesfully saved</p>
+        </Toaster>
+
         <footer>
-          <div className="container">&copy; WEB DEV 0321 | Iron Hack</div>
+          <Container>&copy; WEB DEV 0321 | Iron Hack</Container>
         </footer>
       </>
     );
