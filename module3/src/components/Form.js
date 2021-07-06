@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import Button from "./Button";
-import Toaster from "./Toaster";
-import Container from "./Container";
+import Button from "../example/components/Button";
+import Toaster from "../example/components/Toaster";
+import Container from "../example/components/Container";
 
 import "./Form.css";
 
@@ -40,15 +40,13 @@ class Form extends Component {
       });
     });
 
-    // Store data in an object
-    // Mock server call (set time out)
-    // Toggle save state
-    // Clear the form on succesful
+    // [x] Store data in an object
+    // [x] Mock server call (set time out)
+    // [x] Toggle save state
+    // [] Clear the form on succesful
   };
 
   onHandleCopyfield = (name) => {
-    console.log(name);
-    console.log("add copy field");
     if (this.state.addCopyfield <= 5) {
       this.setState((prevState) => ({
         addCopyfield: prevState.addCopyfield + 1,
@@ -59,8 +57,6 @@ class Form extends Component {
   onHandleFormElement = (event) => {
     console.log(event);
     const { name, value } = event.target;
-
-    <input type="text" name="ih-classname" />;
 
     // this.setState({
     //   form: {
@@ -82,13 +78,7 @@ class Form extends Component {
     const { addCopyfield, priority, saving } = this.state;
     return (
       <>
-        <header>
-          <Container bgcolor="#f90">
-            <h1>Iron Hack Complaints Form</h1>
-          </Container>
-        </header>
-
-        <section className="container">
+        <Container horizontalPadding="1.5rem">
           <form onSubmit={this.onSubmitForm}>
             <fieldset className="form-legend">
               <h1>Add ticket</h1>
@@ -141,13 +131,12 @@ class Form extends Component {
                 </div>
               )}
 
-              <button
-                className="btn btn-simple"
-                type="button"
-                onClick={() => this.onHandleCopyfield("milo")}
+              <Button
+                btnType="simple"
+                buttonClick={() => this.onHandleCopyfield("milo")}
               >
                 add+
-              </button>
+              </Button>
             </fieldset>
 
             <fieldset className="form-legend">
@@ -201,34 +190,21 @@ class Form extends Component {
             </section>
 
             <Button type="submit">Submit</Button>
-            {/* <button className="btn btn-primary" type="submit">Submit</button> */}
-
             <Button btnType="secondary" type="button">
               Reset
             </Button>
           </form>
 
           {saving && <p>saving...</p>}
-        </section>
+        </Container>
 
-        <section className="container">
-          <article className="card">
-            <div>Ticket: name, date</div>
-          </article>
-        </section>
-
-        <section className="toaster toaster-error">
-          <div className="toaster-close-btn">close</div>
+        <Toaster type="error">
           <p>Something went wrong: [Error message]</p>
-        </section>
+        </Toaster>
 
         <Toaster type="success">
           <p>Succesfully saved</p>
         </Toaster>
-
-        <footer>
-          <Container>&copy; WEB DEV 0321 | Iron Hack</Container>
-        </footer>
       </>
     );
   }

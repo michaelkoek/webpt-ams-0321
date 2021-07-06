@@ -2,6 +2,7 @@
 html,
 body {
   font-family: "Helvetica", sans-serif;
+  height: 100%;
 }
 
 html,
@@ -53,4 +54,8 @@ section {
 *:before,
 *:after {
   box-sizing: border-box;
+}
+
+#root {
+  height: 100%;
 }
