@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const Button = ({
   btnType = "primary",
-  type,
+  type = "button",
   buttonClick,
   disabled,
   children,
@@ -19,7 +19,7 @@ const Button = ({
 
   return (
     <TransformButtonType onClick={buttonClick} type={type} disabled={disabled}>
-      {children} 🍪
+      {children}
     </TransformButtonType>
   );
 };

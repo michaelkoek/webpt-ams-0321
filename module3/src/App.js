@@ -1,78 +1,81 @@
-import React, { Component } from "react";
-import styled from "styled-components";
+import React, { useState, useEffect } from "react";
+import styled, { ThemeProvider } from "styled-components";
+import { Switch, Route, Link } from "react-router-dom";
+import axios from "axios";
 
-import Form from "./components/Form";
-import Container from "./example/components/Container";
-import Button from "./example/components/Button";
-import Card from "./example/components/Card";
+import Home from "./example/pages/Home";
+import ComplaintsCards from "./example/pages/ComplaintsCards";
+import ComplaintsForm from "./example/pages/ComplaintsForm";
+import Header from "./example/components/Header";
+import Footer from "./example/components/Footer";
 
-import "./App.css";
-class App extends Component {
-  state = {
-    toggleMenu: true,
+import AxiosApi from "./example/utils/AxiosApi";
+
+import {
+  ResetStyles,
+  ProjectTheme,
+  AltProjectTheme,
+} from "./example/utils/globalStyles";
+
+// import UseStateExample from "./example/lecture/UseState";
+// import Counter from "./example/lecture/Counter";
+
+function App() {
+  const [formData, setFormData] = useState({});
+  const [toggleTheme, setToggleTheme] = useState(false);
+
+  useEffect(() => {
+    // trigger once (when component is done)
+    const fetchData = async () => {
+      // const response = await axios.get(
+      //   "https://jsonplaceholder.typicode.com/users"
+      // );
+      const response = await AxiosApi("users");
+      console.log("Axios call", response.data);
+    };
+
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    // trigger on dependency
+  }, [toggleTheme]);
+
+  const handleFormData = (formData) => {
+    setFormData({ ...formData });
   };
 
-  handleToggleMenu = () => {
-    this.setState((prevState) => ({
-      toggleMenu: !prevState.toggleMenu,
-    }));
-  };
+  return (
+    <ThemeProvider theme={ProjectTheme}>
+      <ResetStyles />
+      {/* <UseStateExample /> */}
+      {/* <Counter /> */}
+      <Header>Iron Hack Complaints Form</Header>
 
-  render() {
-    console.log("hallo");
+      <Main>
+        <Switch>
+          <Route exact path="/">
+            <Link to="/form">
+              <Home />
+            </Link>
+          </Route>
+          <Route path="/form">
+            <ComplaintsForm myFormData={handleFormData} />
+          </Route>
+          <Route path="/overview">
+            <ComplaintsCards cards={formData} />
+          </Route>
+        </Switch>
+      </Main>
 
-    return (
-      <AppWrapper>
-        <Header>
-          <Container>
-            <h1>Iron Hack Complaints Form</h1>
-          </Container>
-        </Header>
-
-        <Main className="app">
-          {this.state.toggleMenu ? (
-            <Button btnType="primary" buttonClick={this.handleToggleMenu}>
-              Start
-            </Button>
-          ) : (
-            <Form />
-          )}
-
-          <Container>
-            <div className="card-container">
-              <Card />
-              <Card />
-              <Card />
-              <Card />
-            </div>
-          </Container>
-        </Main>
-
-        <Footer>
-          <Container>&copy; WEB DEV 0321 | Iron Hack</Container>
-        </Footer>
-      </AppWrapper>
-    );
-  }
+      <Footer>&copy; WEB DEV 0321 | Iron Hack </Footer>
+    </ThemeProvider>
+  );
 }
 
-const AppWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-`;
-
-const Header = styled.header`
-  flex: 1;
-  padding: 1.5rem;
-`;
-const Footer = styled.footer`
-  flex: 1;
-  background-color: tomato;
-  padding: 1.5rem;
-`;
 const Main = styled.main`
   flex: 10;
+  height: 100%;
 `;
 
 export default App;

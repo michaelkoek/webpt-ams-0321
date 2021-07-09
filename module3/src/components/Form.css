@@ -12,35 +12,6 @@
 /* Input Types */
 /* 1: LABEL */
 
-.form-input {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  margin-bottom: 0.5rem;
-}
-
-.form-input input {
-  border-radius: 5px;
-  border: 1px solid grey;
-  padding: 10px;
-  font-size: 1rem;
-}
-
-.form-input input:disabled {
-  background-color: #bdbbbb;
-  cursor: not-allowed;
-  color: #989393;
-}
-
-.form-input span {
-  cursor: pointer;
-  font-size: 1rem;
-  color: black;
-  padding: 0.8rem 0;
-  font-weight: 300;
-  display: block;
-}
-
 /* BUTTONS */
 
 /* RADIO */
