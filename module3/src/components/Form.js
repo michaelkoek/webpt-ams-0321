@@ -26,19 +26,21 @@ class Form extends Component {
   onSubmitForm = (event) => {
     event.preventDefault();
 
-    this.setState({
-      saving: true,
-    });
+    this.props.myFormData(this.state.form);
 
-    new Promise((resolve) => {
-      setTimeout(() => {
-        resolve(true);
-      }, 3000);
-    }).then(() => {
-      this.setState({
-        saving: false,
-      });
-    });
+    // this.setState({
+    //   saving: true,
+    // });
+
+    // new Promise((resolve) => {
+    //   setTimeout(() => {
+    //     resolve(true);
+    //   }, 3000);
+    // }).then(() => {
+    //   this.setState({
+    //     saving: false,
+    //   });
+    // });
 
     // [x] Store data in an object
     // [x] Mock server call (set time out)
@@ -55,7 +57,7 @@ class Form extends Component {
   };
 
   onHandleFormElement = (event) => {
-    console.log(event);
+    // console.log(event);
     const { name, value } = event.target;
 
     // this.setState({
@@ -73,7 +75,7 @@ class Form extends Component {
   };
 
   render() {
-    console.log(this.state);
+    // console.log(this.state);
 
     const { addCopyfield, priority, saving } = this.state;
     return (
