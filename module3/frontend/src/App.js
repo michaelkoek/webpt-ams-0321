@@ -29,7 +29,7 @@ function App() {
     const fetchData = async () => {
       // const response = await axios.get(
       //   "https://jsonplaceholder.typicode.com/users"
-      // );
+      // );  
       const response = await AxiosApi("users");
       console.log("Axios call", response.data);
     };
