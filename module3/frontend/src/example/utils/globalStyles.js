@@ -67,7 +67,13 @@ const reset = css`
 
 const ResetStyles = createGlobalStyle`${reset}`;
 
-const ProjectTheme = {};
+const ProjectTheme = {
+  color: {
+    primary: "#f90",
+    secondary: "#212353",
+    secondary_light: "#bcbde3",
+  },
+};
 const AltProjectTheme = {};
 
 export { ResetStyles, ProjectTheme, AltProjectTheme };

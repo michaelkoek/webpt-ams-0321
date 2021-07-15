@@ -42,7 +42,6 @@ const StyledInput = styled.input`
   line-height: 1.5;
   color: #495057;
   background-color: #fff;
-  background-clip: padding-box;
   border: 1px solid #ced4da;
   border-radius: 0.25rem;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
@@ -52,6 +51,11 @@ const StyledInput = styled.input`
     border-color: #80bdff;
     outline: 0;
     box-shadow: 0 0 0 0.2rem rgb(0 123 255 / 25%);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    background-color: grey;
   }
 `;
 

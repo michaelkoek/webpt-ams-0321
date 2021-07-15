@@ -15,9 +15,13 @@ app.get('/', (req, res) => {
 })
 
 app.post('/api/users', (req, res) => {
-    const savedComplaints = [];
+    let savedComplaints = [];
     const { form } = req.body;
 
+    console.log(req.body)
+
+    // Create a new object with the form data
+    // And add a unique id to it
     const newComplaint = {
         id: uuidv4(),
         ...form
@@ -27,9 +31,14 @@ app.post('/api/users', (req, res) => {
         if (err) {
             console.error('readFile error: ',err)
         }
+        // Check if the file is empty. If not, use JSON.parse()
         const currentData = data ? JSON.parse(data) : data;
+
+        // Grab the old data and the new data and safe it in the variabel
+        // which will be stored in the JSON file
         savedComplaints = [...currentData, newComplaint]
 
+        // Write the data to the JSON file
         fs.writeFile(
             'savedUsers.json',
             JSON.stringify(savedComplaints),
