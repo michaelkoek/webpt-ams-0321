@@ -15,9 +15,7 @@ app.get('/', (req, res) => {
 })
 
 app.post('/api/users', (req, res) => {
-    let savedComplaints = [];
     const { form } = req.body;
-
     console.log(req.body)
 
     // Create a new object with the form data
@@ -36,7 +34,7 @@ app.post('/api/users', (req, res) => {
 
         // Grab the old data and the new data and safe it in the variabel
         // which will be stored in the JSON file
-        savedComplaints = [...currentData, newComplaint]
+        const savedComplaints = [...currentData, newComplaint]
 
         // Write the data to the JSON file
         fs.writeFile(
