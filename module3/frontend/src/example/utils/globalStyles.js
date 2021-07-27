@@ -58,6 +58,10 @@ const reset = css`
     box-sizing: border-box;
   }
 
+  body {
+    background-color: darkslategray;
+  }
+
   #root {
     height: 100%;
     display: flex;
