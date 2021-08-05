@@ -1,59 +1,71 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import styled, { ThemeProvider } from "styled-components";
 import { Switch, Route, Link } from "react-router-dom";
 
 import Home from "./example/pages/Home";
+import Login from "./example/pages/Login";
+import Logout from "./example/pages/Logout";
 import ComplaintsCards from "./example/pages/ComplaintsCards";
 import ComplaintsForm from "./example/pages/ComplaintsForm";
 import Header from "./example/components/layout/Header";
 import Footer from "./example/components/Footer";
 
-import {
-  ResetStyles,
-  ProjectTheme,
-  AltProjectTheme,
-} from "./example/utils/globalStyles";
+import PrivateRoute from "./example/utils/PrivateRoute";
+import AuthContext from "./example/utils/AuthContext";
 
-// import UseStateExample from "./example/lecture/UseState";
-// import Counter from "./example/lecture/Counter";
+import { ResetStyles, ProjectTheme } from "./example/utils/globalStyles";
 
 function App() {
   const [formData, setFormData] = useState({});
-  const [toggleTheme, setToggleTheme] = useState(false);
-
-  useEffect(() => {
-    // trigger on dependency
-  }, [toggleTheme]);
 
   const handleFormData = (formData) => {
     setFormData({ ...formData });
   };
 
   return (
-    <ThemeProvider theme={ProjectTheme}>
-      <ResetStyles />
-      {/* <UseStateExample /> */}
-      {/* <Counter /> */}
-      <Header>Iron Hack Complaints Form</Header>
+    <AuthContext>
+      <ThemeProvider theme={ProjectTheme}>
+        <ResetStyles />
 
-      <Main>
-        <Switch>
-          <Route exact path="/">
-            <Link to="/form">
-              <Home />
-            </Link>
-          </Route>
-          <Route path="/form">
-            <ComplaintsForm myFormData={handleFormData} />
-          </Route>
-          <Route path="/overview">
-            <ComplaintsCards cards={formData} />
-          </Route>
-        </Switch>
-      </Main>
+        <Header>
+          Iron Hack Complaints Form
+          <div>
+            <Link to="/">home</Link>
+            <Link to="/login">login</Link>
+            <Link to="/logout">logout</Link>
+            <Link to="/form">FORM</Link>
+          </div>
+        </Header>
 
-      <Footer>&copy; WEB DEV 0321 | Iron Hack </Footer>
-    </ThemeProvider>
+        <Main>
+          <Switch>
+            <Route exact path="/">
+              <Link to="/form">
+                <Home />
+              </Link>
+            </Route>
+
+            <Route path="/login">
+              <Login />
+            </Route>
+
+            <Route path="/logout">
+              <Logout />
+            </Route>
+
+            <PrivateRoute path="/form">
+              <ComplaintsForm myFormData={handleFormData} />
+            </PrivateRoute>
+
+            <PrivateRoute path="/overview">
+              <ComplaintsCards cards={formData} />
+            </PrivateRoute>
+          </Switch>
+        </Main>
+
+        <Footer>&copy; WEB DEV 0321 | Iron Hack </Footer>
+      </ThemeProvider>
+    </AuthContext>
   );
 }
 
